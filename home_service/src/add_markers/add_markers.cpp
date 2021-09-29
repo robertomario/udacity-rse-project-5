@@ -47,10 +47,10 @@ void check_subs_before_publish(ros::Publisher& publisher, visualization_msgs::Ma
 void odom_callback(const nav_msgs::Odometry &msg) {
   double x = msg.pose.pose.position.x;
   double y = msg.pose.pose.position.y;
-  ROS_INFO("(%.2f, %.2f) >> (%.2f, %.2f)", x, y, goal_x, goal_y);
-  if ((std::fabs(x - goal_x) < 0.15) && (std::fabs(y - goal_y) < 0.15)) {
+  if ((std::fabs(x - goal_x) <= 0.2) && (std::fabs(y - goal_y) <= 0.2)) {
     has_arrived = true;
   }
+  ROS_INFO("%d: (%.2f, %.2f) >> (%.2f, %.2f)", has_arrived, x, y, goal_x, goal_y);
 }
 
 int main( int argc, char** argv )
@@ -61,7 +61,7 @@ int main( int argc, char** argv )
   ros::Subscriber odom_sub = n.subscribe("/odom", 100, &odom_callback);
   goal_x = 9.0;
   goal_y = 0.6;
-  visualization_msgs::Marker pickup_marker = set_pose(9.0, 0.6, 0.5, 0);
+  visualization_msgs::Marker pickup_marker = set_pose(9.0, 0.6, 0.6, 0);
   check_subs_before_publish(marker_pub, pickup_marker);
   ROS_INFO("Added first marker");
   while (!has_arrived) {
