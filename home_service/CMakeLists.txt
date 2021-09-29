@@ -144,6 +144,10 @@ add_executable(add_markers src/add_markers/add_markers.cpp)
 add_dependencies(add_markers ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(add_markers ${catkin_LIBRARIES})
 
+add_executable(add_markers_old src/add_markers/add_markers_old.cpp)
+add_dependencies(add_markers_old ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(add_markers_old ${catkin_LIBRARIES})
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
