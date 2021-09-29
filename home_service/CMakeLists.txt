@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   move_base_msgs
   actionlib
   visualization_msgs
+  nav_msgs
 )
 
 ## System dependencies are found with CMake's conventions
