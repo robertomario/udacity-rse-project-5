@@ -5,7 +5,7 @@
 
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
 
-move_base_msgs::MoveBaseGoal set_pose(const float& x, const float& y, const int& yaw) {
+move_base_msgs::MoveBaseGoal set_pose(const float& x, const float& y, const float& yaw) {
   move_base_msgs::MoveBaseGoal goal;
   goal.target_pose.header.frame_id = "map";
   goal.target_pose.header.stamp = ros::Time::now();
